@@ -19,10 +19,10 @@ themeToggle.addEventListener('click', () => { isDark = !isDark; applyTheme(); })
 
 function openMobile() { mobilePanel.classList.add('open'); mobileOverlay.classList.add('open'); hamburger.classList.add('active'); document.body.style.overflow = 'hidden'; }
 function closeMobile() { mobilePanel.classList.remove('open'); mobileOverlay.classList.remove('open'); hamburger.classList.remove('active'); document.body.style.overflow = ''; }
+window.closeMobile = closeMobile;
 mobileBtn.addEventListener('click', openMobile);
-mobileClose.addEventListener('click', closeMobile);
 mobileOverlay.addEventListener('click', closeMobile);
-document.querySelectorAll('#mobile-panel .nav-link').forEach(l => l.addEventListener('click', closeMobile));
+document.querySelectorAll('#mobile-panel a').forEach(l => l.addEventListener('click', closeMobile));
 
 function updateActiveLink() {
   const sections = document.querySelectorAll('section[id]');

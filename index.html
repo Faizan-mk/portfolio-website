@@ -78,7 +78,7 @@
 
     #mobile-overlay { position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,0.5); backdrop-filter: blur(6px); opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
     #mobile-overlay.open { opacity: 1; pointer-events: auto; }
-    #mobile-panel { position: fixed; top: 0; right: 0; width: 280px; height: 100vh; z-index: 45; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow-y: auto; }
+    #mobile-panel { position: fixed; top: 0; right: 0; width: 280px; height: 100vh; z-index: 55; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow-y: auto; }
     body.dark #mobile-panel { background: #07080c; border-left: 1px solid rgba(51, 65, 85, 0.25); }
     body.light #mobile-panel { background: #f6f8fc; border-left: 1px solid rgba(148, 163, 184, 0.15); }
     #mobile-panel.open { transform: translateX(0); }
@@ -129,7 +129,7 @@
         <span class="w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-bold text-white gradient-bg">MF</span>
         <span class="text-sm font-semibold">Faizan</span>
       </a>
-      <button id="mobileClose" class="w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer hover:bg-white/5 transition" aria-label="Close">
+      <button id="mobileClose" class="w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer hover:bg-white/5 transition" aria-label="Close" onclick="closeMobile()">
         <i class="fas fa-times text-sm opacity-60"></i>
       </button>
     </div>
