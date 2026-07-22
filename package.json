@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "live-server --port=4173 --host=0.0.0.0 --open=./index.html"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

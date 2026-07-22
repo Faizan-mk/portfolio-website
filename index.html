@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Muhammad Faizan | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{screens:{xs:'480px'}}}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -45,23 +46,21 @@
     body.dark .tag { background: rgba(99, 102, 241, 0.12); color: #a5b4fc; }
     body.light .tag { background: rgba(79, 70, 229, 0.08); color: #4f46e5; }
 
-    .nav-link { position: relative; font-size: 0.8125rem; font-weight: 500; padding: 0.25rem 0; transition: color 0.3s ease; }
-    body.dark .nav-link { color: rgba(226, 232, 240, 0.6); }
-    body.light .nav-link { color: rgba(15, 23, 42, 0.6); }
-    .nav-link:hover, .nav-link.active { color: inherit; }
-    body.dark .nav-link:hover, body.dark .nav-link.active { color: #e2e8f0; }
-    body.light .nav-link:hover, body.light .nav-link.active { color: #0f172a; }
-    .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; border-radius: 2px; transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-    body.dark .nav-link::after { background: linear-gradient(90deg, #6366f1, #a855f7); }
-    body.light .nav-link::after { background: linear-gradient(90deg, #4f46e5, #9333ea); }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link { font-size: 0.8125rem; font-weight: 500; transition: all 0.3s ease; }
+    body.dark .nav-link { color: rgba(226, 232, 240, 0.55); }
+    body.light .nav-link { color: rgba(15, 23, 42, 0.55); }
+    .nav-link:hover { color: inherit; }
+    body.dark .nav-link:hover { background: rgba(99, 102, 241, 0.08); color: #e2e8f0; }
+    body.light .nav-link:hover { background: rgba(79, 70, 229, 0.06); color: #0f172a; }
+    .nav-link.active { color: inherit; }
+    body.dark .nav-link.active { background: rgba(99, 102, 241, 0.1); color: #e2e8f0; }
+    body.light .nav-link.active { background: rgba(79, 70, 229, 0.08); color: #0f172a; }
 
     #navbar-inner { transition: all 0.4s ease; border-bottom: 1px solid transparent; }
-    body.dark #navbar-inner { background: rgba(7, 8, 12, 0.5); }
-    body.light #navbar-inner { background: rgba(246, 248, 252, 0.5); }
+    #navbar-inner { background: transparent !important; }
     #navbar.scrolled #navbar-inner { border-bottom: 1px solid; }
-    body.dark #navbar.scrolled #navbar-inner { background: rgba(7, 8, 12, 0.92); border-color: rgba(51, 65, 85, 0.25); }
-    body.light #navbar.scrolled #navbar-inner { background: rgba(246, 248, 252, 0.92); border-color: rgba(148, 163, 184, 0.15); }
+    body.dark #navbar.scrolled #navbar-inner { background: rgba(7, 8, 12, 0.85) !important; border-color: rgba(99, 102, 241, 0.12); }
+    body.light #navbar.scrolled #navbar-inner { background: rgba(246, 248, 252, 0.88) !important; border-color: rgba(79, 70, 229, 0.08); }
     @keyframes navSlide { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
     #navbar { animation: navSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 
@@ -102,16 +101,26 @@
     .project-card .project-shine { position: absolute; inset: 0; background: linear-gradient(135deg, transparent 40%, rgba(99,102,241,0.06) 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
     .project-card:hover .project-shine { opacity: 1; }
 
-    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; border-radius: 9999px; font-size: 0.8125rem; font-weight: 600; color: #fff; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.625rem 1.25rem; border-radius: 9999px; font-size: 0.8125rem; font-weight: 600; color: #fff; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
     .btn-primary:hover { transform: scale(1.05); box-shadow: 0 8px 24px rgba(99,102,241,0.3); }
     body.light .btn-primary:hover { box-shadow: 0 8px 24px rgba(79,70,229,0.25); }
 
-    .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; border-radius: 9999px; font-size: 0.8125rem; font-weight: 500; transition: all 0.3s ease; }
+    .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.625rem 1.25rem; border-radius: 9999px; font-size: 0.8125rem; font-weight: 500; transition: all 0.3s ease; }
     body.dark .btn-ghost { color: rgba(226, 232, 240, 0.7); }
     body.light .btn-ghost { color: rgba(15, 23, 42, 0.7); }
     .btn-ghost:hover { transform: scale(1.05); }
     body.dark .btn-ghost:hover { background: rgba(99, 102, 241, 0.08); color: #e2e8f0; }
     body.light .btn-ghost:hover { background: rgba(79, 70, 229, 0.06); color: #0f172a; }
+
+
+
+    @keyframes charReveal {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .char-reveal { display: inline-block; opacity: 0; background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; }
+    body.light .char-reveal { background: linear-gradient(135deg, #4f46e5, #9333ea, #db2777); background-size: 200% 200%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .char-reveal.show { animation: charReveal 0.08s ease forwards; }
 
     @keyframes pulse-subtle { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.7; } }
     .pulse-subtle { animation: pulse-subtle 4s ease-in-out infinite; }
@@ -126,7 +135,7 @@
   <div id="mobile-panel">
     <div class="flex items-center justify-between p-4 border-b" style="border-color:rgba(51,65,85,0.15);">
       <a href="#" class="flex items-center gap-2.5">
-        <span class="w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-bold text-white gradient-bg">MF</span>
+        <img src="logo.jpg" alt="Logo" class="w-7 h-7 rounded-lg object-cover shrink-0" />
         <span class="text-sm font-semibold">Faizan</span>
       </a>
       <button id="mobileClose" class="w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer hover:bg-white/5 transition" aria-label="Close" onclick="closeMobile()">
@@ -138,8 +147,10 @@
       <a href="#education" class="nav-link">Education</a>
       <a href="#experience" class="nav-link">Experience</a>
       <a href="#skills" class="nav-link">Skills</a>
+      <a href="#testimonials" class="nav-link">Testimonials</a>
       <a href="#projects" class="nav-link">Projects</a>
       <a href="#certifications" class="nav-link">Certifications</a>
+      <a href="#achievements" class="nav-link">Achievements</a>
       <div class="mx-4 my-3 h-px" style="background:rgba(51,65,85,0.15);"></div>
       <a href="#contact" class="flex items-center justify-center gap-2 mx-3 mt-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white gradient-bg transition hover:opacity-90">
         <i class="fas fa-paper-plane text-xs"></i> Get In Touch
@@ -150,28 +161,31 @@
   <nav id="navbar" class="fixed top-0 left-0 w-full z-50">
     <div id="navbar-inner" style="backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);">
       <div class="max-w-6xl mx-auto px-5 sm:px-8">
-        <div class="flex items-center justify-between h-16">
-          <a href="#" class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white gradient-bg shrink-0">MF</span>
-            <span class="hidden sm:block text-sm font-semibold tracking-tight">Muhammad Faizan</span>
+        <div class="flex items-center justify-between h-16 sm:h-[72px]">
+          <a href="#" class="flex items-center gap-3 group">
+            <div class="relative">
+              <div class="absolute inset-0 rounded-xl gradient-bg opacity-20 blur-sm group-hover:opacity-40 transition"></div>
+              <img src="logo.jpg" alt="Logo" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-cover shrink-0 ring-2 ring-white/10 group-hover:ring-indigo-400/40 transition-all relative" />
+            </div>
+            <span class="hidden sm:block text-sm font-bold gradient-text tracking-tight">Muhammad Faizan</span>
           </a>
-          <div class="hidden md:flex items-center gap-8">
-            <a href="#profile" class="nav-link">Profile</a>
-            <a href="#education" class="nav-link">Education</a>
-            <a href="#experience" class="nav-link">Experience</a>
-            <a href="#skills" class="nav-link">Skills</a>
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#contact" class="nav-link">Contact</a>
+          <div class="hidden md:flex items-center gap-1">
+            <a href="#profile" class="nav-link px-3 py-2 rounded-lg">Profile</a>
+            <a href="#education" class="nav-link px-3 py-2 rounded-lg">Education</a>
+            <a href="#experience" class="nav-link px-3 py-2 rounded-lg">Experience</a>
+            <a href="#skills" class="nav-link px-3 py-2 rounded-lg">Skills</a>
+            <a href="#projects" class="nav-link px-3 py-2 rounded-lg">Projects</a>
+            <a href="#contact" class="nav-link px-3 py-2 rounded-lg">Contact</a>
           </div>
-          <div class="flex items-center gap-2">
-            <a href="#contact" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold text-white gradient-bg transition-all duration-300 hover:scale-105 hover:shadow-lg">
+          <div class="flex items-center gap-1.5">
+            <a href="#contact" class="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-semibold text-white gradient-bg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/25">
               <i class="fas fa-paper-plane text-[10px]"></i> Hire Me
             </a>
-            <button id="themeToggle" class="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" style="background:rgba(99,102,241,0.08);" aria-label="Toggle theme">
+            <button id="themeToggle" class="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" style="background:rgba(99,102,241,0.08);" aria-label="Toggle theme">
               <i class="fas fa-moon text-xs text-indigo-400" id="moonIcon"></i>
               <i class="fas fa-sun text-xs text-amber-400 hidden" id="sunIcon"></i>
             </button>
-            <button id="mobileMenuBtn" class="w-8 h-8 rounded-lg flex items-center justify-center md:hidden transition-all duration-300 hover:scale-105 cursor-pointer" style="background:rgba(99,102,241,0.08);" aria-label="Menu">
+            <button id="mobileMenuBtn" class="w-9 h-9 rounded-xl flex items-center justify-center md:hidden transition-all duration-300 hover:scale-105 cursor-pointer" style="background:rgba(99,102,241,0.08);" aria-label="Menu">
               <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
             </button>
           </div>
@@ -189,25 +203,25 @@
             <img src="IMG-20250126-WA0018.jpg" alt="Muhammad Faizan" class="w-full h-full object-cover" />
           </div>
         </div>
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6" style="background:rgba(99,102,241,0.08); color:#818cf8; border:1px solid rgba(99,102,241,0.15);">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
-          Open to Data Analyst roles
-        </div>
-        <h1 class="text-5xl sm:text-7xl md:text-8xl font-extrabold leading-[1.05] mb-4 tracking-tight">
-          <span class="gradient-text">Muhammad<br/>Faizan</span>
+
+        <h1 class="text-[2.75rem] sm:text-7xl md:text-8xl font-extrabold leading-[1.05] mb-4 tracking-tight">
+          <span class="gradient-text inline-flex flex-col items-center" id="heroName" style="opacity:0">
+            <span>Muhammad</span>
+            <span>Faizan</span>
+          </span>
         </h1>
         <p class="text-base sm:text-lg opacity-60 max-w-lg mx-auto mb-8 leading-relaxed">Data Analyst & Full-Stack Developer. Turning raw data into actionable insights with Python, SQL, and the MERN stack.</p>
-        <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
-          <span class="flex items-center gap-1.5 text-xs opacity-50"><i class="fas fa-map-marker-alt text-indigo-400"></i>Mianwali, Pakistan</span>
-          <span class="text-xs opacity-30">|</span>
+        <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 mb-10 max-w-md mx-auto">
+          <span class="flex items-center gap-1.5 text-xs opacity-50"><i class="fas fa-map-marker-alt text-indigo-400"></i>Rawalpindi, Pakistan</span>
+          <span class="text-xs opacity-30 hidden sm:inline">|</span>
           <a href="mailto:faizannaizi007@gmail.com" class="flex items-center gap-1.5 text-xs opacity-50 hover:opacity-100 transition"><i class="fas fa-envelope text-indigo-400"></i>faizannaizi007@gmail.com</a>
-          <span class="text-xs opacity-30">|</span>
+          <span class="text-xs opacity-30 hidden sm:inline">|</span>
           <span class="flex items-center gap-1.5 text-xs opacity-50"><i class="fas fa-phone text-indigo-400"></i>+92-303-2798007</span>
         </div>
-        <div class="flex flex-wrap items-center justify-center gap-3">
-          <a href="#contact" class="btn-primary gradient-bg"><i class="fas fa-paper-plane text-xs"></i> Get In Touch</a>
-          <a href="https://linkedin.com/in/muhammad-faizanmk" target="_blank" rel="noopener noreferrer" class="btn-ghost glass"><i class="fab fa-linkedin text-sm" style="color:#0A66C2;"></i> LinkedIn</a>
-          <a href="https://github.com/Faizan-mk" target="_blank" rel="noopener noreferrer" class="btn-ghost glass"><i class="fab fa-github text-sm"></i> GitHub</a>
+        <div class="flex flex-col xs:flex-row items-center justify-center gap-3">
+          <a href="#contact" class="btn-primary gradient-bg w-full xs:w-auto"><i class="fas fa-paper-plane text-xs"></i> Get In Touch</a>
+          <a href="https://linkedin.com/in/muhammad-faizanmk" target="_blank" rel="noopener noreferrer" class="btn-ghost glass w-full xs:w-auto"><i class="fab fa-linkedin text-sm" style="color:#0A66C2;"></i> LinkedIn</a>
+          <a href="https://github.com/Faizan-mk" target="_blank" rel="noopener noreferrer" class="btn-ghost glass w-full xs:w-auto"><i class="fab fa-github text-sm"></i> GitHub</a>
         </div>
       </div>
     </section>
@@ -220,7 +234,7 @@
           <div class="text-xs opacity-40 mt-1 uppercase tracking-wider">CGPA</div>
         </div>
         <div class="text-center">
-          <div class="text-2xl sm:text-3xl font-bold gradient-text">6+</div>
+          <div class="text-2xl sm:text-3xl font-bold gradient-text">9+</div>
           <div class="text-xs opacity-40 mt-1 uppercase tracking-wider">Projects</div>
         </div>
         <div class="text-center">
@@ -355,6 +369,7 @@
           <div class="space-y-3">
             <div><div class="flex justify-between text-xs mb-1"><span>MySQL</span><span class="opacity-40">80%</span></div><div class="h-1.5 rounded-full" style="background:rgba(99,102,241,0.08);"><div class="h-full rounded-full skill-bar-fill gradient-bg" style="width:0%" data-w="80%"></div></div></div>
             <div><div class="flex justify-between text-xs mb-1"><span>MongoDB</span><span class="opacity-40">75%</span></div><div class="h-1.5 rounded-full" style="background:rgba(99,102,241,0.08);"><div class="h-full rounded-full skill-bar-fill gradient-bg" style="width:0%" data-w="75%"></div></div></div>
+            <div><div class="flex justify-between text-xs mb-1"><span>Sequelize ORM</span><span class="opacity-40">70%</span></div><div class="h-1.5 rounded-full" style="background:rgba(99,102,241,0.08);"><div class="h-full rounded-full skill-bar-fill gradient-bg" style="width:0%" data-w="70%"></div></div></div>
             <div><div class="flex justify-between text-xs mb-1"><span>Git / GitHub</span><span class="opacity-40">85%</span></div><div class="h-1.5 rounded-full" style="background:rgba(99,102,241,0.08);"><div class="h-full rounded-full skill-bar-fill gradient-bg" style="width:0%" data-w="85%"></div></div></div>
             <div><div class="flex justify-between text-xs mb-1"><span>Postman</span><span class="opacity-40">80%</span></div><div class="h-1.5 rounded-full" style="background:rgba(99,102,241,0.08);"><div class="h-full rounded-full skill-bar-fill gradient-bg" style="width:0%" data-w="80%"></div></div></div>
           </div>
@@ -372,6 +387,20 @@
         <div class="glass rounded-2xl p-6 card project-card">
           <div class="project-shine"></div>
           <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(99,102,241,0.1);"><i class="fas fa-building text-indigo-400 text-sm"></i></div>
+          <h3 class="text-sm font-semibold mb-2">Hostel Management System</h3>
+          <p class="text-xs opacity-55 leading-relaxed mb-4">Full-stack hostel management platform with Admin and Student dashboards. Includes room management, fee tracking, invoices, notices, mess schedule, complaints, and role-based access with JWT auth.</p>
+          <div class="flex flex-wrap gap-1.5"><span class="tag text-[10px]">React</span><span class="tag text-[10px]">Node.js</span><span class="tag text-[10px]">MySQL</span><span class="tag text-[10px]">JWT</span></div>
+        </div>
+        <div class="glass rounded-2xl p-6 card project-card">
+          <div class="project-shine"></div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(99,102,241,0.1);"><i class="fas fa-route text-indigo-400 text-sm"></i></div>
+          <h3 class="text-sm font-semibold mb-2">AI-Based Travel Planner</h3>
+          <p class="text-xs opacity-55 leading-relaxed mb-4">AI-powered travel platform with destination suggestions, cost estimation, hotel/transport booking, AI chatbot, budget planner, expense tracker, weather updates, SOS module, and eco-friendly tips. MERN + Python/Flask.</p>
+          <div class="flex flex-wrap gap-1.5"><span class="tag text-[10px]">MERN</span><span class="tag text-[10px]">Python</span><span class="tag text-[10px]">AI</span><span class="tag text-[10px]">AWS</span></div>
+        </div>
+        <div class="glass rounded-2xl p-6 card project-card">
+          <div class="project-shine"></div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(99,102,241,0.1);"><i class="fas fa-building text-indigo-400 text-sm"></i></div>
           <h3 class="text-sm font-semibold mb-2">Gurgaon Real Estate Market Analysis</h3>
           <p class="text-xs opacity-55 leading-relaxed mb-4">Analyzed property prices and trends across the Gurgaon real estate market, studying the impact of location, property type, and size on pricing. Performed data cleaning and EDA.</p>
           <div class="flex flex-wrap gap-1.5"><span class="tag text-[10px]">Python</span><span class="tag text-[10px]">Pandas</span><span class="tag text-[10px]">EDA</span></div>
@@ -385,10 +414,10 @@
         </div>
         <div class="glass rounded-2xl p-6 card project-card">
           <div class="project-shine"></div>
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(99,102,241,0.1);"><i class="fas fa-route text-indigo-400 text-sm"></i></div>
-          <h3 class="text-sm font-semibold mb-2">AI-Based Travel Planner</h3>
-          <p class="text-xs opacity-55 leading-relaxed mb-4">Built an intelligent travel planning system using the MERN stack, featuring AI recommendations, budgeting, and a trip dashboard.</p>
-          <div class="flex flex-wrap gap-1.5"><span class="tag text-[10px]">MERN</span><span class="tag text-[10px]">AI</span><span class="tag text-[10px]">Team</span></div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(99,102,241,0.1);"><i class="fas fa-lock text-indigo-400 text-sm"></i></div>
+          <h3 class="text-sm font-semibold mb-2">User Authentication System</h3>
+          <p class="text-xs opacity-55 leading-relaxed mb-4">Full-stack auth system with secure registration, login, JWT-based session management, bcrypt hashing, protected routes, Context API for global auth state, and localStorage persistence.</p>
+          <div class="flex flex-wrap gap-1.5"><span class="tag text-[10px]">MERN</span><span class="tag text-[10px]">JWT</span><span class="tag text-[10px]">Security</span></div>
         </div>
         <div class="glass rounded-2xl p-6 card project-card">
           <div class="project-shine"></div>
@@ -411,6 +440,13 @@
           <p class="text-xs opacity-55 leading-relaxed mb-4">Responsive React.js admin dashboard with analytics and transaction tracking.</p>
           <div class="flex flex-wrap gap-1.5"><span class="tag text-[10px]">React.js</span><span class="tag text-[10px]">Dashboard</span></div>
         </div>
+        <div class="glass rounded-2xl p-6 card project-card">
+          <div class="project-shine"></div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(99,102,241,0.1);"><i class="fas fa-user text-indigo-400 text-sm"></i></div>
+          <h3 class="text-sm font-semibold mb-2">Personal Portfolio Website</h3>
+          <p class="text-xs opacity-55 leading-relaxed mb-4">Responsive personal portfolio built with HTML, Tailwind CSS, and JavaScript to showcase projects, skills, and experience. Features dark/light theme, particle animations, and mobile-friendly design.</p>
+          <div class="flex flex-wrap gap-1.5"><span class="tag text-[10px]">HTML</span><span class="tag text-[10px]">Tailwind CSS</span><span class="tag text-[10px]">JS</span></div>
+        </div>
       </div>
     </section>
 
@@ -427,6 +463,74 @@
           <div class="flex items-start gap-3 p-3 rounded-xl transition hover:bg-white/5"><i class="fas fa-certificate text-indigo-400 text-sm mt-0.5 shrink-0"></i><div><p class="text-sm font-medium">MS Word, Excel, PowerPoint</p><p class="text-xs opacity-45 mt-0.5">TEVTA — Jun–Aug 2022</p></div></div>
           <div class="flex items-start gap-3 p-3 rounded-xl transition hover:bg-white/5"><i class="fas fa-certificate text-indigo-400 text-sm mt-0.5 shrink-0"></i><div><p class="text-sm font-medium">Frontend Development Internship</p><p class="text-xs opacity-45 mt-0.5">CodeAlpha — Apr–May 2025</p></div></div>
           <div class="flex items-start gap-3 p-3 rounded-xl transition hover:bg-white/5 sm:col-span-2 max-w-md mx-auto"><i class="fas fa-certificate text-indigo-400 text-sm mt-0.5 shrink-0"></i><div><p class="text-sm font-medium">Back End Development Internship</p><p class="text-xs opacity-45 mt-0.5">DevelopersHub Corporation — Mar–Apr 2026</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 fade-up">
+      <div class="text-center mb-10">
+        <span class="tag mb-3 inline-block">Testimonials</span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">What People Say</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <div class="glass rounded-2xl p-6 card">
+          <div class="flex items-center gap-1 mb-3">
+            <i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i>
+          </div>
+          <p class="text-sm opacity-65 leading-relaxed mb-4">"Faizan delivered clean, well-structured backend APIs ahead of schedule. His understanding of REST principles and database design made collaboration seamless."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full gradient-bg flex items-center justify-center text-white text-xs font-bold">SH</div>
+            <div><p class="text-sm font-medium">Saad Hassan</p><p class="text-[11px] opacity-40">Supervisor, DevelopersHub</p></div>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6 card">
+          <div class="flex items-center gap-1 mb-3">
+            <i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i>
+          </div>
+          <p class="text-sm opacity-65 leading-relaxed mb-4">"Great front-end skills and a quick learner. Faizan adapted to our React.js workflow in days and contributed meaningfully to the project."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full gradient-bg flex items-center justify-center text-white text-xs font-bold">CA</div>
+            <div><p class="text-sm font-medium">CodeAlpha Team</p><p class="text-[11px] opacity-40">Frontend Internship</p></div>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6 card">
+          <div class="flex items-center gap-1 mb-3">
+            <i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i><i class="fas fa-star text-xs" style="color:#f59e0b;"></i>
+          </div>
+          <p class="text-sm opacity-65 leading-relaxed mb-4">"Collaborated with Faizan on the AI Travel Planner project. He handled the backend architecture and database design with minimal supervision."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full gradient-bg flex items-center justify-center text-white text-xs font-bold">AK</div>
+            <div><p class="text-sm font-medium">Abdullah Khan</p><p class="text-[11px] opacity-40">Project Teammate</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements" class="py-20 fade-up">
+      <div class="text-center mb-10">
+        <span class="tag mb-3 inline-block">Achievements</span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Honors & Recognition</h2>
+      </div>
+      <div class="max-w-4xl mx-auto glass rounded-2xl p-6 sm:p-8 card">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3 p-3 rounded-xl transition hover:bg-white/5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center gradient-bg text-white text-sm shrink-0"><i class="fas fa-trophy text-xs"></i></div>
+            <div><p class="text-sm font-medium">Dean's List Honor</p><p class="text-xs opacity-45 mt-0.5">Awarded for academic excellence in BS Computer Science</p></div>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-xl transition hover:bg-white/5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center gradient-bg text-white text-sm shrink-0"><i class="fas fa-users text-xs"></i></div>
+            <div><p class="text-sm font-medium">PEEF Soft Skills Program</p><p class="text-xs opacity-45 mt-0.5">Selected for Punjab Educational Endowment Fund training — Nov 2024</p></div>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-xl transition hover:bg-white/5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center gradient-bg text-white text-sm shrink-0"><i class="fas fa-code text-xs"></i></div>
+            <div><p class="text-sm font-medium">Top Project — AI Travel Planner</p><p class="text-xs opacity-45 mt-0.5">Recognized as standout team project in university capstone showcase</p></div>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-xl transition hover:bg-white/5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center gradient-bg text-white text-sm shrink-0"><i class="fas fa-certificate text-xs"></i></div>
+            <div><p class="text-sm font-medium">Backend Development Certification</p><p class="text-xs opacity-45 mt-0.5">Completed intensive internship at DevelopersHub Corporation — 2026</p></div>
+          </div>
         </div>
       </div>
     </section>
@@ -450,7 +554,7 @@
           </a>
           <div class="glass rounded-2xl px-6 py-4 w-full card flex items-center gap-4 text-left">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center gradient-bg text-white text-sm"><i class="fas fa-map-marker-alt"></i></div>
-            <div><div class="text-xs opacity-40 mb-0.5">Location</div><div class="text-sm font-medium">Mianwali, Pakistan</div></div>
+            <div><div class="text-xs opacity-40 mb-0.5">Location</div><div class="text-sm font-medium">Rawalpindi, Pakistan</div></div>
           </div>
         </div>
         <div class="flex justify-center gap-4 mt-8">

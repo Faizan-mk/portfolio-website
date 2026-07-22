@@ -57,6 +57,26 @@ function resize() { c.width = window.innerWidth; c.height = window.innerHeight; 
 window.addEventListener('resize', resize);
 resize();
 for (let i = 0; i < 50; i++) pts.push({ x: Math.random() * c.width, y: Math.random() * c.height, r: Math.random() * 1.5 + 0.5, dx: (Math.random() - 0.5) * 0.2, dy: (Math.random() - 0.5) * 0.2 });
+(function() {
+  const el = document.getElementById('heroName');
+  if (!el) return;
+  const lines = el.querySelectorAll('span');
+  let idx = 0;
+  lines.forEach(line => {
+    const text = line.textContent;
+    line.textContent = '';
+    [...text].forEach(ch => {
+      const s = document.createElement('span');
+      s.className = 'char-reveal'; s.textContent = ch; s.dataset.idx = idx;
+      line.appendChild(s); idx++;
+    });
+  });
+  el.querySelectorAll('.char-reveal').forEach(s => {
+    setTimeout(() => s.classList.add('show'), parseInt(s.dataset.idx) * 120);
+  });
+  el.style.opacity = '1';
+})();
+
 function anim() {
   ctx.clearRect(0, 0, c.width, c.height);
   const dm = body.classList.contains('dark');
