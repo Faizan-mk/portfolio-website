@@ -83,6 +83,59 @@ function anim() {
   ctx.fillStyle = dm ? 'rgba(99,102,241,0.3)' : 'rgba(79,70,229,0.2)';
   pts.forEach(p => { p.x += p.dx; p.y += p.dy; if (p.x < 0 || p.x > c.width) p.dx *= -1; if (p.y < 0 || p.y > c.height) p.dy *= -1; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill(); });
   for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) { const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d = Math.sqrt(dx * dx + dy * dy); if (d < 100) { ctx.strokeStyle = dm ? `rgba(99,102,241,${0.06 * (1 - d / 100)})` : `rgba(79,70,229,${0.04 * (1 - d / 100)})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke(); } }
-  requestAnimationFrame(anim);
-}
-anim();
+requestAnimationFrame(anim);
+  }
+  anim();
+
+  // Scroll progress bar
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress() {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    progressBar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Back to top
+  const toTopBtn = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    toTopBtn.classList.toggle('show', window.scrollY > 500);
+  }, { passive: true });
+  toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Button shine sweep
+  document.querySelectorAll('.btn-primary, .btn-ghost').forEach(b => {
+    if (!b.querySelector('.btn-sweep')) {
+      const s = document.createElement('span');
+      s.className = 'btn-sweep';
+      b.appendChild(s);
+    }
+  });
+
+  // Staggered reveal for project cards
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const siblings = Array.from(entry.target.parentElement.children).filter(el => el.classList.contains('reveal'));
+        const idx = siblings.indexOf(entry.target);
+        entry.target.style.transitionDelay = (idx % 3) * 0.12 + 's';
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // 3D tilt on project cards
+  if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(900px) rotateY(${px * 6}deg) rotateX(${-py * 6}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+  }
