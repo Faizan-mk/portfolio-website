@@ -38,10 +38,12 @@ function parseMessages(body: unknown): Content[] | null {
   return messages.map(({ role, text }) => ({ role, parts: [{ text }] }));
 }
 
-// Opens a stream on the first model that accepts the request, moving on when one is missing or out of free quota.
+// Opens a stream on the first model that accepts the request, moving on when one is missing, out of free quota,
+// or overloaded; the whole list gets one more pass after a short pause, since Gemini's 503s are usually brief.
 async function openStream(contents: Content[]) {
   let lastError: unknown;
-  for (const model of MODELS) {
+  for (const [attempt, model] of [...MODELS, ...MODELS].entries()) {
+    if (attempt === MODELS.length) await new Promise((r) => setTimeout(r, 800));
     try {
       return await ai.models.generateContentStream({
         model,

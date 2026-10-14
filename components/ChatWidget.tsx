@@ -382,7 +382,9 @@ export default function ChatWidget() {
               initial={{ opacity: 0, scale: 0.6, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="panel absolute bottom-full right-2 mb-1 w-52 origin-bottom-right px-4 py-3 text-sm text-white/85 shadow-xl shadow-black/30"
+              // Not .panel: that class sets position: relative, which would pull the bubble into the girl's narrow box.
+              // On phones the bubble shifts right to the screen gutter and caps its width so it never runs off-screen.
+              className="absolute bottom-full right-[-3.6rem] mb-1 w-[min(14rem,calc(100vw-2rem))] origin-bottom-right rounded-2xl border border-white/10 bg-panel px-3.5 py-2.5 text-[0.8rem] leading-snug text-white/85 shadow-xl shadow-black/40 sm:right-2 sm:w-56 sm:px-4 sm:py-3 sm:text-sm"
             >
               <button
                 onClick={() => setGreet(false)}
@@ -395,7 +397,10 @@ export default function ChatWidget() {
                 Hi there! 👋 Got questions about {profile.firstName}? Ask his AI assistant right here!
               </button>
               {/* bubble tail */}
-              <span aria-hidden className="absolute -bottom-1.5 right-10 h-3 w-3 rotate-45 border-b border-r border-white/10 bg-panel" />
+              <span
+                aria-hidden
+                className="absolute -bottom-1.5 right-[6.4rem] h-3 w-3 rotate-45 border-b border-r border-white/10 bg-panel sm:right-12"
+              />
             </motion.div>
             <button onClick={() => setOpen(true)} aria-label="Open AI assistant" className="block w-full">
               <GirlGuide className="h-auto w-full drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" />
