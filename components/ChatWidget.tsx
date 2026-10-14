@@ -76,7 +76,9 @@ export default function ChatWidget() {
 
   // Follow the streaming answer unless the visitor has scrolled up to reread something.
   useEffect(() => {
-    if (stickToBottom.current) listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
+    // An empty chat shows the welcome screen from the top; a conversation follows the newest message.
+    if (messages.length === 0) listRef.current?.scrollTo({ top: 0 });
+    else if (stickToBottom.current) listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
   }, [messages, open]);
 
   const onScroll = () => {
@@ -170,24 +172,38 @@ export default function ChatWidget() {
             </div>
 
             <section className="relative flex min-w-0 flex-1 flex-col">
-              <header className="flex items-center justify-between gap-3 border-b border-white/10 bg-ink/60 px-4 py-3 backdrop-blur-md sm:px-8">
-                <div className="flex min-w-0 items-center gap-3">
-                  <BotMascot size={40} talking={loading} />
+              <header className="flex items-center justify-between gap-2 border-b border-white/10 bg-ink/60 px-3 py-2.5 backdrop-blur-md sm:gap-3 sm:px-8 sm:py-3">
+                <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+                  <span className="shrink-0">
+                    <BotMascot size={34} talking={loading} />
+                  </span>
                   <div className="min-w-0">
-                    <p className="truncate font-display text-base font-semibold text-white">{profile.firstName}&apos;s assistant</p>
-                    <p className="flex items-center gap-1.5 text-xs text-white/50">
-                      <span className={`h-1.5 w-1.5 rounded-full ${loading ? "animate-pulse bg-gold" : "bg-emerald-400"}`} />
-                      {loading ? "Writing an answer" : "Online, answers from his portfolio"}
+                    {/* Phones get a short title and status so the header stays on two clean lines. */}
+                    <p className="truncate font-display text-[0.95rem] font-semibold text-white sm:text-base">
+                      <span className="sm:hidden">AI assistant</span>
+                      <span className="hidden sm:inline">{profile.firstName}&apos;s assistant</span>
+                    </p>
+                    <p className="flex items-center gap-2 whitespace-nowrap text-xs font-medium text-white/60">
+                      {/* Live dot: a solid dot with a soft ping ring, green when ready and gold while answering. */}
+                      <span className="relative flex h-2.5 w-2.5 shrink-0">
+                        <span
+                          className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-70 ${loading ? "bg-gold" : "bg-emerald-400"}`}
+                        />
+                        <span
+                          className={`relative inline-flex h-2.5 w-2.5 rounded-full shadow-[0_0_8px_currentColor] ${loading ? "bg-gold text-gold" : "bg-emerald-400 text-emerald-400"}`}
+                        />
+                      </span>
+                      {loading ? "Typing…" : <>Online<span className="hidden sm:inline">, answers from his portfolio</span></>}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
                   <div className="flex items-center rounded-full border border-white/10 bg-panel/70 p-0.5">
                   <a
                     href={`mailto:${profile.email}`}
                     title="Email"
                     aria-label="Email"
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-white/60 transition hover:bg-white/5 hover:text-gold"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-white/60 transition hover:bg-white/5 hover:text-gold sm:h-9 sm:w-9"
                   >
                     <HiOutlineEnvelope size={19} />
                   </a>
@@ -197,7 +213,7 @@ export default function ChatWidget() {
                     rel="noreferrer"
                     title="WhatsApp"
                     aria-label="WhatsApp"
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-white/60 transition hover:bg-white/5 hover:text-gold"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-white/60 transition hover:bg-white/5 hover:text-gold sm:h-9 sm:w-9"
                   >
                     <FaWhatsapp size={18} />
                   </a>
@@ -205,7 +221,7 @@ export default function ChatWidget() {
                     href={profile.resume}
                     title="Download resume"
                     aria-label="Download resume"
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-white/60 transition hover:bg-white/5 hover:text-gold"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-white/60 transition hover:bg-white/5 hover:text-gold sm:h-9 sm:w-9"
                   >
                     <HiOutlineArrowDownTray size={19} />
                   </a>
@@ -213,7 +229,7 @@ export default function ChatWidget() {
                   <button
                     onClick={() => setOpen(false)}
                     aria-label="Close assistant"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/70 transition hover:border-gold/60 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/70 transition hover:border-gold/60 sm:h-10 sm:w-10 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold"
                   >
                     <HiOutlineXMark size={20} />
                   </button>
