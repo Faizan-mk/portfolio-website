@@ -142,7 +142,9 @@ export default function ChatWidget() {
     abortRef.current?.abort();
     setMessages([]);
     setInput("");
-    stickToBottom.current = true;
+    // Show the welcome screen from the top; the next question turns auto-follow back on.
+    stickToBottom.current = false;
+    listRef.current?.scrollTo({ top: 0 });
     inputRef.current?.focus();
   };
 
@@ -180,22 +182,6 @@ export default function ChatWidget() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <AnimatePresence>
-                    {messages.length > 0 && (
-                      <motion.button
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
-                        onClick={newChat}
-                        title="New chat"
-                        aria-label="New chat"
-                        className="flex h-10 items-center gap-1.5 rounded-full border border-white/10 bg-panel/70 px-3 text-sm text-white/75 transition hover:border-gold/50 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold sm:px-4"
-                      >
-                        <HiOutlinePencilSquare size={17} />
-                        <span className="hidden sm:inline">New chat</span>
-                      </motion.button>
-                    )}
-                  </AnimatePresence>
                   <div className="flex items-center rounded-full border border-white/10 bg-panel/70 p-0.5">
                   <a
                     href={`mailto:${profile.email}`}
@@ -353,6 +339,26 @@ export default function ChatWidget() {
                 className="px-4 pb-4 pt-2 sm:px-8"
               >
                 <div className="mx-auto w-full max-w-2xl">
+                  {/* Sits right above the input, where eyes already are, once there is a conversation to clear. */}
+                  <AnimatePresence>
+                    {messages.length > 0 && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        className="mb-3 flex justify-center"
+                      >
+                        <button
+                          type="button"
+                          onClick={newChat}
+                          className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-medium text-gold shadow-[0_6px_20px_-10px_rgba(240,178,82,0.6)] transition hover:-translate-y-0.5 hover:bg-gold hover:text-on-gold focus-visible:outline-2 focus-visible:outline-gold"
+                        >
+                          <HiOutlinePencilSquare size={16} />
+                          New chat
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                   <div className="flex items-center gap-2 rounded-full border border-white/10 bg-panel p-1.5 pl-5 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.6)] transition focus-within:border-gold/60 focus-within:shadow-[0_0_0_4px_rgba(240,178,82,0.12),0_10px_40px_-15px_rgba(240,178,82,0.35)]">
                     <input
                       ref={inputRef}
