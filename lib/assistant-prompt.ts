@@ -4,10 +4,17 @@ import path from "node:path";
 /* System prompt for the portfolio assistant. Everything it knows comes from content/profile.md, read on each request
    so edits apply without a restart; HTML comments in that file are notes for the owner and are stripped before sending. */
 export function assistantPrompt() {
-  const profile = readFileSync(path.join(process.cwd(), "content", "profile.md"), "utf8")
+  let profile = readFileSync(path.join(process.cwd(), "content", "profile.md"), "utf8")
+    .replace(/\r\n/g, "\n")
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
+  // Drop headings whose sections are still empty (only owner notes), so the model doesn't see bare titles.
+  let previous;
+  do {
+    previous = profile;
+    profile = profile.replace(/\n## [^\n]*\n*(?=## |$)/g, "\n");
+  } while (profile !== previous);
 
   return `You are the AI assistant on Muhammad Faizan's portfolio website. Visitors are usually recruiters, clients, or fellow developers who want to know about Faizan's work.
 

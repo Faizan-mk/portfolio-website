@@ -7,7 +7,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import {
   HiOutlineArrowDownTray, HiOutlineArrowPath, HiOutlineBriefcase, HiOutlineChatBubbleLeftRight, HiOutlineCodeBracket,
   HiOutlineRectangleStack, HiOutlineSparkles, HiOutlineUser, HiOutlineArrowUpRight, HiOutlineEnvelope, HiOutlinePaperAirplane,
-  HiOutlineXMark, HiStop,
+  HiOutlinePencilSquare, HiOutlineXMark, HiStop,
 } from "react-icons/hi2";
 import BotMascot from "@/components/BotMascot";
 import GirlGuide from "@/components/GirlGuide";
@@ -93,8 +93,9 @@ export default function ChatWidget() {
     setLoading(true);
     stickToBottom.current = true;
 
+    // No-op once the chat was cleared mid-answer, so a late chunk or "Stopped." can't land in the new chat.
     const update = (fn: (last: Message) => Message) =>
-      setMessages((prev) => [...prev.slice(0, -1), fn(prev[prev.length - 1])]);
+      setMessages((prev) => (prev.length === 0 ? prev : [...prev.slice(0, -1), fn(prev[prev.length - 1])]));
     const fail = (msg: string) => update((last) => ({ ...last, content: msg, error: true }));
 
     const controller = new AbortController();
@@ -136,6 +137,14 @@ export default function ChatWidget() {
     if (lastUser >= 0) send(messages[lastUser].content, messages.slice(0, lastUser));
   };
 
+  // Start over: stop any answer in progress and return to the starter questions.
+  const newChat = () => {
+    abortRef.current?.abort();
+    setMessages([]);
+    setInput("");
+    stickToBottom.current = true;
+    inputRef.current?.focus();
+  };
 
   return (
     <>
@@ -171,6 +180,22 @@ export default function ChatWidget() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
+                  <AnimatePresence>
+                    {messages.length > 0 && (
+                      <motion.button
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        onClick={newChat}
+                        title="New chat"
+                        aria-label="New chat"
+                        className="flex h-10 items-center gap-1.5 rounded-full border border-white/10 bg-panel/70 px-3 text-sm text-white/75 transition hover:border-gold/50 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold sm:px-4"
+                      >
+                        <HiOutlinePencilSquare size={17} />
+                        <span className="hidden sm:inline">New chat</span>
+                      </motion.button>
+                    )}
+                  </AnimatePresence>
                   <div className="flex items-center rounded-full border border-white/10 bg-panel/70 p-0.5">
                   <a
                     href={`mailto:${profile.email}`}

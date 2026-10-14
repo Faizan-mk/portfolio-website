@@ -35,6 +35,18 @@ Open to backend, frontend, or full-stack developer roles.
 - Work type: open to full-time jobs, freelance projects, and part-time or contract work.
 - Location: open to remote work, on-site in Rawalpindi / Islamabad, or hybrid.
 - Relocation: willing to relocate to another city or country.
+- Time zone: Pakistan Standard Time (PKT, UTC+5).
+
+<!--
+  Recruiters often ask these next. Add the ones you're happy to share:
+  - Notice period / earliest start date, e.g. "Can start within 2 weeks" or "Available immediately".
+  - Hours you can overlap with other time zones, e.g. "Comfortable working with US East Coast hours".
+  - Typical reply time, e.g. "Usually replies to email within 24 hours".
+-->
+
+## Not shared here
+
+Salary expectations, rates and personal details are discussed directly with Faizan by email or WhatsApp.
 
 <!--
   Add your real preferences here so the assistant can answer "Is he open to work?" and "What roles?":
@@ -73,6 +85,18 @@ Databases and backend services: MongoDB, MySQL with Sequelize ORM, PostgreSQL, S
 
 Other tools: Expo / EAS, Android builds, Vite, React Router, Postman, Vercel, Python (Pandas, NumPy, Seaborn for data analysis).
 
+## Currently learning
+
+<!-- What you're learning right now, e.g. "TypeScript, Docker, system design". Shows you keep growing. -->
+
+## Working style
+
+<!--
+  2-4 honest lines on how you work with people, e.g.
+  "Prefers small pull requests and quick feedback", "Writes clear docs and API notes",
+  "Comfortable working async across time zones", "Enjoys pairing and code reviews".
+-->
+
 ## How I work
 
 1. Discover: understand the goal, the users and the requirements, then agree on scope and milestones.
@@ -81,6 +105,15 @@ Other tools: Expo / EAS, Android builds, Vite, React Router, Postman, Vercel, Py
 4. Deploy: ship to production on Vercel or EAS, monitor, and keep improving after launch.
 
 ## Projects
+
+<!--
+  Recruiters care most about why you built something, what you did, and what changed because of it.
+  For your top 3-4 projects, add a few lines under each:
+  - My role: e.g. "Solo build" or "Led the backend in a team of 4".
+  - The hard part: one real problem you solved, e.g. "Matching filters were slow, so I added MongoDB indexes".
+  - Result: numbers if you have them, e.g. "Used by 120 students", "Page load cut from 4s to 1.2s".
+  - Code: GitHub repo link, e.g. https://github.com/Faizan-mk/<repo>
+-->
 
 ### Rishta & Rang (matrimonial app)
 Android matrimonial app built with React Native and Expo for creating profiles, browsing and filtering matches, and connecting with potential partners. Built and distributed via EAS.
@@ -153,6 +186,17 @@ Built with Next.js, React and Tailwind CSS, with scroll animations, a responsive
 ## Languages
 
 English (professional), Urdu (fluent), Saraiki.
+
+## FAQ
+
+<!--
+  Ready answers to questions visitors ask often. Write them as Q / A pairs, e.g.
+  Q: Does he do freelance projects for small businesses?
+  A: Yes, mostly web apps and landing pages built with React or Next.js.
+  Q: Can he maintain an existing codebase?
+  A: Yes, ...
+  Only write things that are true. The assistant uses these answers as written.
+-->
 
 ## Personal
 
