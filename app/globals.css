@@ -208,26 +208,23 @@ html.light .outline-name { -webkit-text-stroke-color: rgba(176, 106, 16, 0.35); 
   .bot-mascot * { animation: none !important; }
 }
 
-/* Girl guide beside the chat launcher: idle bounce, blink, glance, ponytail sway, pointing jab, foot tap. */
-.girl-guide * { transform-box: view-box; }
-.girl-guide .girl-body { animation: girl-bounce 2.4s ease-in-out infinite; }
-.girl-guide .girl-shadow { transform-origin: 68px 212px; animation: girl-shadow 2.4s ease-in-out infinite; }
-.girl-guide .girl-head { transform-origin: 67px 86px; animation: girl-tilt 4.8s ease-in-out infinite; }
-.girl-guide .girl-eyes { transform-origin: 67px 61px; animation: bot-blink 4s infinite; }
-.girl-guide .girl-look { animation: girl-look 4.8s ease-in-out infinite; }
-.girl-guide .girl-pony { transform-origin: 92px 44px; animation: girl-pony 2.4s ease-in-out infinite; }
-.girl-guide .girl-bow { transform-origin: 86px 30px; animation: girl-pony 2.4s ease-in-out infinite reverse; }
-.girl-guide .girl-point { transform-origin: 84px 100px; animation: girl-point 1.2s ease-in-out infinite; }
-.girl-guide .girl-foot { transform-origin: 79px 152px; animation: girl-tap 0.8s ease-in-out infinite; }
-@keyframes girl-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-@keyframes girl-shadow { 0%, 100% { transform: scaleX(1); opacity: 0.25; } 50% { transform: scaleX(0.9); opacity: 0.18; } }
-@keyframes girl-tilt { 0%, 100% { transform: rotate(0deg); } 30% { transform: rotate(5deg); } 65% { transform: rotate(-3deg); } }
-@keyframes girl-look { 0%, 100% { transform: translate(1.5px, 1px); } 45%, 55% { transform: translate(-1px, 0); } }
-@keyframes girl-pony { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(6deg); } }
-@keyframes girl-point { 0%, 100% { transform: rotate(0deg) translate(0, 0); } 50% { transform: rotate(-6deg) translate(2px, 2px); } }
-@keyframes girl-tap { 0%, 60%, 100% { transform: rotate(0deg); } 30% { transform: rotate(-7deg); } }
+/* Guide character beside the chat launcher: idle bounce, blink, glance, head tilt, pointing jab, foot tap. */
+.guide * { transform-box: view-box; }
+.guide .guide-body { animation: guide-bounce 2.4s ease-in-out infinite; }
+.guide .guide-shadow { transform-origin: 68px 212px; animation: guide-shadow 2.4s ease-in-out infinite; }
+.guide .guide-head { transform-origin: 67px 84px; animation: guide-tilt 4.8s ease-in-out infinite; }
+.guide .guide-eyes { transform-origin: 67px 59px; animation: bot-blink 4s infinite; }
+.guide .guide-look { animation: guide-look 4.8s ease-in-out infinite; }
+.guide .guide-point { transform-origin: 83px 99px; animation: guide-point 1.2s ease-in-out infinite; }
+.guide .guide-foot { transform-origin: 79px 150px; animation: guide-tap 0.8s ease-in-out infinite; }
+@keyframes guide-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes guide-shadow { 0%, 100% { transform: scaleX(1); opacity: 0.25; } 50% { transform: scaleX(0.9); opacity: 0.18; } }
+@keyframes guide-tilt { 0%, 100% { transform: rotate(0deg); } 30% { transform: rotate(4deg); } 65% { transform: rotate(-3deg); } }
+@keyframes guide-look { 0%, 100% { transform: translate(1.5px, 1px); } 45%, 55% { transform: translate(-1px, 0); } }
+@keyframes guide-point { 0%, 100% { transform: rotate(0deg) translate(0, 0); } 50% { transform: rotate(-6deg) translate(2px, 2px); } }
+@keyframes guide-tap { 0%, 60%, 100% { transform: rotate(0deg); } 30% { transform: rotate(-7deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .girl-guide * { animation: none !important; }
+  .guide * { animation: none !important; }
 }
 
 /* Chat empty state: the dashed orbit around the mascot turns slowly. */

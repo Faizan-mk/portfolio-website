@@ -10,7 +10,7 @@ import {
   HiOutlinePencilSquare, HiOutlineXMark, HiStop,
 } from "react-icons/hi2";
 import BotMascot from "@/components/BotMascot";
-import GirlGuide from "@/components/GirlGuide";
+import GuideCharacter from "@/components/GuideCharacter";
 import { experience, profile, projects, stats, type Project } from "@/lib/data";
 
 type Message = { role: "user" | "assistant"; content: string; error?: boolean };
@@ -52,7 +52,7 @@ export default function ChatWidget() {
   const abortRef = useRef<AbortController | null>(null);
   const stickToBottom = useRef(true);
 
-  // The girl says hello a few seconds after load (after the preloader), until the visitor opens or dismisses it.
+  // The guide says hello a few seconds after load (after the preloader), until the visitor opens or dismisses it.
   useEffect(() => {
     const t = setTimeout(() => setGreet(true), 4500);
     return () => clearTimeout(t);
@@ -417,7 +417,7 @@ export default function ChatWidget() {
 
       <AnimatePresence>
         {greet && !open && (
-          // A cartoon girl jumps up beside the launcher and points at it, with a speech bubble over her head.
+          // A cartoon guide jumps up beside the launcher and points at it, with a speech bubble over her head.
           <motion.div
             initial={{ opacity: 0, y: 120 }}
             animate={{ opacity: 1, y: 0 }}
@@ -429,7 +429,7 @@ export default function ChatWidget() {
               initial={{ opacity: 0, scale: 0.6, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              // Not .panel: that class sets position: relative, which would pull the bubble into the girl's narrow box.
+              // Not .panel: that class sets position: relative, which would pull the bubble into the guide's narrow box.
               // On phones the bubble shifts right to the screen gutter and caps its width so it never runs off-screen.
               className="absolute bottom-full right-[-3.6rem] mb-1 w-[min(14rem,calc(100vw-2rem))] origin-bottom-right rounded-2xl border border-white/10 bg-panel px-3.5 py-2.5 text-[0.8rem] leading-snug text-white/85 shadow-xl shadow-black/40 sm:right-2 sm:w-56 sm:px-4 sm:py-3 sm:text-sm"
             >
@@ -450,7 +450,7 @@ export default function ChatWidget() {
               />
             </motion.div>
             <button onClick={() => setOpen(true)} aria-label="Open AI assistant" className="block w-full">
-              <GirlGuide className="h-auto w-full drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" />
+              <GuideCharacter className="h-auto w-full drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" />
             </button>
           </motion.div>
         )}
