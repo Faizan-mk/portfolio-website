@@ -64,7 +64,7 @@ export default function Effects() {
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-gold text-on-gold shadow-lg shadow-gold/30"
+            className="fixed bottom-24 right-[1.3rem] z-40 flex h-11 w-11 items-center justify-center rounded-full bg-gold text-on-gold shadow-lg shadow-gold/30"
           >
             <HiArrowUp size={18} />
           </motion.button>

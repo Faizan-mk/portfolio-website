@@ -2,6 +2,7 @@ import Effects from "@/components/Effects";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import ChatWidget from "@/components/ChatWidget";
 import Cursor from "@/components/motion/Cursor";
 import Marquee from "@/components/motion/Marquee";
 import Preloader from "@/components/motion/Preloader";
@@ -36,6 +37,7 @@ export default function Home() {
       </main>
       <Footer />
       <Effects />
+      <ChatWidget />
       <ScrollFX />
       <div aria-hidden className="grain" />
     </>

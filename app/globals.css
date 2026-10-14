@@ -187,3 +187,50 @@ html.light .outline-name { -webkit-text-stroke-color: rgba(176, 106, 16, 0.35); 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Chat mascot: blinking + glancing eyes, head tilt, pulsing antenna, talking mouth, waving hand, sparkles. */
+.bot-mascot * { transform-box: view-box; }
+.bot-mascot .bot-eyes { transform-origin: 32px 32px; animation: bot-blink 4.5s infinite; }
+.bot-mascot .bot-look { animation: bot-look 7s ease-in-out infinite; }
+.bot-mascot .bot-head-tilt { transform-origin: 32px 56px; animation: bot-tilt 5s ease-in-out infinite; }
+.bot-mascot .bot-antenna-glow { animation: bot-pulse 2s ease-in-out infinite; }
+.bot-mascot .bot-mouth-talk { transform-origin: 32px 41px; animation: bot-talk 0.35s ease-in-out infinite alternate; }
+.bot-mascot .bot-wave { transform-origin: 56px 50px; animation: bot-wave 1.6s ease-in-out infinite; }
+.bot-mascot .bot-sparkle { transform-box: fill-box; transform-origin: center; animation: bot-sparkle 2.4s ease-in-out infinite; }
+@keyframes bot-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+@keyframes bot-look { 0%, 20%, 100% { transform: translate(0, 0); } 30%, 45% { transform: translate(-2.5px, 0.5px); } 55%, 70% { transform: translate(2.5px, -0.5px); } 80% { transform: translate(0, 0); } }
+@keyframes bot-tilt { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 60% { transform: rotate(4deg); } }
+@keyframes bot-pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes bot-talk { from { transform: scaleY(0.4); } to { transform: scaleY(1.3); } }
+@keyframes bot-wave { 0%, 60%, 100% { transform: rotate(0deg); } 10%, 30% { transform: rotate(-28deg); } 20%, 40% { transform: rotate(8deg); } }
+@keyframes bot-sparkle { 0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(90deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .bot-mascot * { animation: none !important; }
+}
+
+/* Girl guide beside the chat launcher: idle bounce, blink, glance, ponytail sway, pointing jab, foot tap. */
+.girl-guide * { transform-box: view-box; }
+.girl-guide .girl-body { animation: girl-bounce 2.4s ease-in-out infinite; }
+.girl-guide .girl-shadow { transform-origin: 68px 212px; animation: girl-shadow 2.4s ease-in-out infinite; }
+.girl-guide .girl-head { transform-origin: 67px 86px; animation: girl-tilt 4.8s ease-in-out infinite; }
+.girl-guide .girl-eyes { transform-origin: 67px 61px; animation: bot-blink 4s infinite; }
+.girl-guide .girl-look { animation: girl-look 4.8s ease-in-out infinite; }
+.girl-guide .girl-pony { transform-origin: 92px 44px; animation: girl-pony 2.4s ease-in-out infinite; }
+.girl-guide .girl-bow { transform-origin: 86px 30px; animation: girl-pony 2.4s ease-in-out infinite reverse; }
+.girl-guide .girl-point { transform-origin: 84px 100px; animation: girl-point 1.2s ease-in-out infinite; }
+.girl-guide .girl-foot { transform-origin: 79px 152px; animation: girl-tap 0.8s ease-in-out infinite; }
+@keyframes girl-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes girl-shadow { 0%, 100% { transform: scaleX(1); opacity: 0.25; } 50% { transform: scaleX(0.9); opacity: 0.18; } }
+@keyframes girl-tilt { 0%, 100% { transform: rotate(0deg); } 30% { transform: rotate(5deg); } 65% { transform: rotate(-3deg); } }
+@keyframes girl-look { 0%, 100% { transform: translate(1.5px, 1px); } 45%, 55% { transform: translate(-1px, 0); } }
+@keyframes girl-pony { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(6deg); } }
+@keyframes girl-point { 0%, 100% { transform: rotate(0deg) translate(0, 0); } 50% { transform: rotate(-6deg) translate(2px, 2px); } }
+@keyframes girl-tap { 0%, 60%, 100% { transform: rotate(0deg); } 30% { transform: rotate(-7deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .girl-guide * { animation: none !important; }
+}
+
+/* Chat empty state: the dashed orbit around the mascot turns slowly. */
+.chat-orbit { animation: chat-orbit 14s linear infinite; }
+@keyframes chat-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .chat-orbit { animation: none; } }
