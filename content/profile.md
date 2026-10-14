@@ -32,6 +32,10 @@ At a glance: 12+ projects, 2 internships, 5 certifications, CGPA 3.44.
 
 Open to backend, frontend, or full-stack developer roles.
 
+- Work type: open to full-time jobs, freelance projects, and part-time or contract work.
+- Location: open to remote work, on-site in Rawalpindi / Islamabad, or hybrid.
+- Relocation: willing to relocate to another city or country.
+
 <!--
   Add your real preferences here so the assistant can answer "Is he open to work?" and "What roles?":
   e.g. full-time / freelance / remote / on-site, preferred cities or time zones, notice period, earliest start date.
@@ -148,7 +152,7 @@ Built with Next.js, React and Tailwind CSS, with scroll animations, a responsive
 
 ## Languages
 
-<!-- Add the languages you speak, e.g. English, Urdu, Punjabi, and your level in each. -->
+English (professional), Urdu (fluent), Saraiki.
 
 ## Personal
 

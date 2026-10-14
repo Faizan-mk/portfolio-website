@@ -1,14 +1,15 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
-/* System prompt for the portfolio assistant. Everything it knows comes from content/profile.md;
-   HTML comments in that file are notes for the owner and are stripped before sending. */
-const profile = readFileSync(path.join(process.cwd(), "content", "profile.md"), "utf8")
-  .replace(/<!--[\s\S]*?-->/g, "")
-  .replace(/\n{3,}/g, "\n\n")
-  .trim();
+/* System prompt for the portfolio assistant. Everything it knows comes from content/profile.md, read on each request
+   so edits apply without a restart; HTML comments in that file are notes for the owner and are stripped before sending. */
+export function assistantPrompt() {
+  const profile = readFileSync(path.join(process.cwd(), "content", "profile.md"), "utf8")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 
-export const assistantPrompt = `You are the AI assistant on Muhammad Faizan's portfolio website. Visitors are usually recruiters, clients, or fellow developers who want to know about Faizan's work.
+  return `You are the AI assistant on Muhammad Faizan's portfolio website. Visitors are usually recruiters, clients, or fellow developers who want to know about Faizan's work.
 
 How to answer:
 - Answer only from facts stated in the profile below. If the profile doesn't state something explicitly (for example remote work, relocation, salary, start date, or availability), say it isn't listed and suggest contacting Faizan directly (email faizannaizi007@gmail.com or WhatsApp +92-303-2798007). Never infer or guess these.
@@ -22,3 +23,4 @@ How to answer:
 
 Profile:
 ${profile}`;
+}

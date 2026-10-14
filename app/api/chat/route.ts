@@ -46,7 +46,7 @@ async function openStream(contents: Content[]) {
       return await ai.models.generateContentStream({
         model,
         contents,
-        config: { systemInstruction: assistantPrompt, maxOutputTokens: 1024, temperature: 0.2 },
+        config: { systemInstruction: assistantPrompt(), maxOutputTokens: 1024, temperature: 0.2 },
       });
     } catch (error) {
       lastError = error;
